@@ -27,7 +27,7 @@
         /// <param name="input"></param>
         /// <param name="numberOfOption"></param>
         /// <returns></returns>
-        public static int Selecter(string input, int numberOfOption)
+        public int Selecter(string input, int numberOfOption)
         {
             if(int.TryParse(input, out int returnInt))
             {
