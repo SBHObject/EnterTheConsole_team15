@@ -141,6 +141,11 @@
             string description = ItemName + " | " + "회복량 : " + ItemAmount + " | " + ItemDescription + "  ";
             return description;
         }
+
+        public virtual void UseItem(Character character)
+        {
+            
+        }
     }
 
     internal class ItemHealPotion : ItemConsumable
@@ -152,6 +157,11 @@
         {
             string description = ItemName + " | " + "회복량 : " + ItemAmount + " | " + ItemDescription + "  ";
             return description;
+        }
+
+        public override void UseItem(Character character)
+        {
+            //회복
         }
     }
 }

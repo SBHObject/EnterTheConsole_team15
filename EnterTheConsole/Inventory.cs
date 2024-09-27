@@ -50,5 +50,49 @@
                 return true;
             }
         }
+
+        public bool UseItem(int index)
+        {
+            switch(playerInven[index].ItemType)
+            {
+                case ItemType.Weapon:
+                    if (playerEquip[0] == null)
+                    {
+                        playerEquip[0] = playerInven[index];
+                        playerInven[index] = null;
+                    }
+                    else
+                    {
+                        IItem temp = playerEquip[0];
+                        playerEquip[0] = playerInven[index];
+                        playerInven[index] = temp;
+                    }
+                    Console.WriteLine($"{playerInven[index].ItemName}를 장착했습니다");
+                    return true;
+
+                case ItemType.Armor:
+                    if (playerEquip[1] == null)
+                    {
+                        playerEquip[1] = playerInven[index];
+                        playerInven[index] = null;
+                    }
+                    else
+                    {
+                        IItem temp = playerEquip[1];
+                        playerEquip[1] = playerInven[index];
+                        playerInven[index] = temp;
+                    }
+                    Console.WriteLine($"{playerInven[index].ItemName}를 장착했습니다");
+                    return true;
+
+                case ItemType.Consumable:
+                    Console.WriteLine("소모품을 사용하였습니다.");
+                    return true;
+
+                default:
+                    Console.WriteLine("아이템 사용에 실패하였습니다.");
+                    return false;
+            }
+        }
     }
 }
