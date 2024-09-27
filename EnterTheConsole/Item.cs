@@ -18,9 +18,23 @@
         public ItemDatabase()
         {
             int itemId = 0;
+            items.Add(new ItemWeapon(-1, "오류", "어째서?", 0, 0));
             items.Add(new ItemWeapon(itemId++, "철 검", "평범한 철검", 5, 100));
             items.Add(new ItemArmor(itemId ++, "가죽갑옷", "가죽재질의 갑옷", 5, 100));
             items.Add(new ItemHealPotion(itemId++, "하급 포션", "낮은 품질의 회복포션", 30, 50));
+        }
+
+        public IItem SearchByItemID(int itemId)
+        {
+            for(int i = 0; i < items.Count; i++)
+            {
+                if (items[i].ItemID == itemId)
+                {
+                    return items[i];
+                }
+            }
+
+            return items[0];
         }
     }
 
