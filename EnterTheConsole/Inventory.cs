@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EnterTheConsole
+﻿namespace EnterTheConsole
 {
     internal class Inventory
     {
@@ -23,14 +17,37 @@ namespace EnterTheConsole
             get { return PlayerEquip; }
         }
 
-        public void AddItem(IItem item)
+        //인벤토리에 아이템을 넣는 함수
+        public bool AddItem(IItem item)
         {
             for (int i = 0; i < PlayerInven.Length; i++)
             {
+                //인벤토리 배열에 빈자리가 있으면 그 자리에 넣고 반복문 종료
                 if (playerInven[i] == null)
                 {
                     playerInven[i] = item;
+                    return true;
                 }
+            }
+
+            Console.WriteLine("인벤토리가 꽉찼습니다.");
+            Thread.Sleep(1000);
+            return false;
+        }
+
+        //인벤토리 아이템 제거 함수
+        public bool RemoveItem(int indexNum)
+        {
+            if (playerInven[indexNum] == null)
+            {
+                Console.WriteLine("선택한 슬롯에 아이템이 없습니다.");
+                Thread.Sleep(1000);
+                return false;
+            }
+            else
+            {
+                playerInven[indexNum] = null;
+                return true;
             }
         }
     }
