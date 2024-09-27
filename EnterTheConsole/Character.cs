@@ -47,8 +47,22 @@
         //캐릭터 생성
         public void CreatePlayer(string name)
         {
-            Console.WriteLine("캐릭터를 생성합니다.");
-            Console.WriteLine();
+            while (true)
+            {
+                Console.Clear();
+                Console.WriteLine("캐릭터를 생성합니다.");
+                Console.WriteLine();
+                Console.WriteLine("캐릭터 이름을 입력해주세요");
+                string nameInput = Console.ReadLine();
+                Console.Clear();
+                Console.WriteLine("이 이름이 맞습니까?");
+                Console.WriteLine($"1.예 2.아니오");
+                if(ut.Selecter(Console.ReadLine(), 2) == 1)
+                {
+                    Console.WriteLine("게임을 시작합니다.");
+                    break;
+                }
+            }
         }
     }
 }
