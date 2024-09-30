@@ -117,10 +117,11 @@
             //아이템의 종류에 따라 달라짐
             switch (playerInven.PlayerInven[index].ItemType)
             {
-                //무기일경우
+                //장비일경우
                 case ItemType.Weapon:
                 case ItemType.Armor:
                     playerInven.EquipItem(index);
+                    Console.WriteLine($"{playerInven.PlayerInven[index].ItemName}를 장착했습니다");
                     return true;
 
                 //소모품인경우

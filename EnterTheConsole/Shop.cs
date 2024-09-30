@@ -15,8 +15,9 @@
         //외부에서 읽어들일 프로퍼티
         public List<IItem> ShopItems { get {  return shopItems; } }
 
-        public Shop()
+        public Shop(Character _player)
         {
+            player = _player;
             //이후 상점변경 가능
             //아이템 데이터베이스의 모든 아이템을 상점 아이템 리스트에 추가
             foreach (var item in itemDb.Items)
@@ -25,12 +26,6 @@
             }
             //오류 처리용 아이템 리스트에서 제거
             shopItems.Remove(itemDb.SearchByItemID(-1));
-        }
-
-        //객체 가져오기 함수
-        public void GetPlayerClass(Character _player)
-        {
-            player = _player;
         }
 
         //플레이어가 아이템을 구매할 때 호출
