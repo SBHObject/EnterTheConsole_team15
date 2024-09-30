@@ -54,5 +54,39 @@
                 return true;
             }
         }
+
+        public void EquipItem(int index)
+        {
+            if (playerInven[index].ItemType == ItemType.Weapon)
+            {
+                if (playerEquip[0] == null)
+                {
+                    playerEquip[0] = playerInven[index];
+                    RemoveItem(index);
+                }
+                else
+                {
+                    IItem temp = playerEquip[0];
+                    playerEquip[0] = playerInven[index];
+                    RemoveItem(index);
+                    AddItem(temp);
+                }
+            }
+            else if (playerInven[index].ItemType == ItemType.Armor)
+            {
+                if (playerEquip[1] == null)
+                {
+                    playerEquip[0] = playerInven[index];
+                    RemoveItem(index);
+                }
+                else
+                {
+                    IItem temp = playerEquip[1];
+                    playerEquip[0] = playerInven[index];
+                    RemoveItem(index);
+                    AddItem(temp);
+                }
+            }
+        }
     }
 }

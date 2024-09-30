@@ -119,37 +119,8 @@
             {
                 //무기일경우
                 case ItemType.Weapon:
-                    //장비 슬롯에 아이템이 없으면 장착
-                    if (playerInven.PlayerEquip[0] == null)
-                    {
-                        playerInven.PlayerEquip[0] = playerInven.PlayerInven[index];
-                        playerInven.RemoveItem(index);
-                    }
-                    else
-                    {
-                        //있으면 교체
-                        IItem temp = playerInven.PlayerEquip[0];
-                        playerInven.PlayerEquip[0] = playerInven.PlayerInven[index];
-                        playerInven.PlayerInven[index] = temp;
-                    }
-                    Console.WriteLine($"{playerInven.PlayerInven[index].ItemName}를 장착했습니다");
-                    return true;
-
-                //방어구일경우
                 case ItemType.Armor:
-                    //무기와 같은 기능, 슬롯이 달라짐
-                    if (playerInven.PlayerEquip[1] == null)
-                    {
-                        playerInven.PlayerEquip[1] = playerInven.PlayerInven[index];
-                        playerInven.RemoveItem(index);
-                    }
-                    else
-                    {
-                        IItem temp = playerInven.PlayerEquip[1];
-                        playerInven.PlayerEquip[1] = playerInven.PlayerInven[index];
-                        playerInven.PlayerInven[index] = temp;
-                    }
-                    Console.WriteLine($"{playerInven.PlayerInven[index].ItemName}를 장착했습니다");
+                    playerInven.EquipItem(index);
                     return true;
 
                 //소모품인경우
