@@ -3,7 +3,7 @@
     internal class Character
     {
         //유틸리티 클래스 예제
-        Utility ut = Utility.Instance;
+        private Utility ut = Utility.Instance;
 
         //이름
         public string Name { get; private set; }
@@ -32,6 +32,9 @@
 
         //사망관련
         public bool IsDead { get; private set; } = false;
+
+        //인벤토리
+        public Inventory playerInven = new Inventory();
 
         //생성자 - 기본값 초기화
         /// <summary>
@@ -107,6 +110,62 @@
             int temp = Health + amount;
             //회복량이 체력 최대치를 넘으면, 최대체력으로
             Health = (temp > maxHealth)? maxHealth : temp;
+        }
+
+        public bool UseItem(int index)
+        {
+            //아이템의 종류에 따라 달라짐
+            switch (playerInven.PlayerInven[index].ItemType)
+            {
+                //무기일경우
+                case ItemType.Weapon:
+                    //장비 슬롯에 아이템이 없으면 장착
+                    if (playerInven.PlayerEquip[0] == null)
+                    {
+                        playerInven.PlayerEquip[0] = playerInven.PlayerInven[index];
+                        playerInven.RemoveItem(index);
+                    }
+                    else
+                    {
+                        //있으면 교체
+                        IItem temp = playerInven.PlayerEquip[0];
+                        playerInven.PlayerEquip[0] = playerInven.PlayerInven[index];
+                        playerInven.PlayerInven[index] = temp;
+                    }
+                    Console.WriteLine($"{playerInven.PlayerInven[index].ItemName}를 장착했습니다");
+                    return true;
+
+                //방어구일경우
+                case ItemType.Armor:
+                    //무기와 같은 기능, 슬롯이 달라짐
+                    if (playerInven.PlayerEquip[1] == null)
+                    {
+                        playerInven.PlayerEquip[1] = playerInven.PlayerInven[index];
+                        playerInven.RemoveItem(index);
+                    }
+                    else
+                    {
+                        IItem temp = playerInven.PlayerEquip[1];
+                        playerInven.PlayerEquip[1] = playerInven.PlayerInven[index];
+                        playerInven.PlayerInven[index] = temp;
+                    }
+                    Console.WriteLine($"{playerInven.PlayerInven[index].ItemName}를 장착했습니다");
+                    return true;
+
+                //소모품인경우
+                case ItemType.Consumable:
+                    Console.WriteLine("소모품을 사용하였습니다.");
+                    ItemConsumable usedItem = (ItemConsumable)playerInven.PlayerInven[index];
+                    //아이템 사용
+                    usedItem.UseItem(this);
+                    playerInven.RemoveItem(index);
+                    return true;
+
+                //그 외 입력이 들어올경우 아이템 사용 실패 -> 버그
+                default:
+                    Console.WriteLine("아이템 사용에 실패하였습니다.");
+                    return false;
+            }
         }
     }
 }

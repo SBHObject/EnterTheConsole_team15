@@ -6,6 +6,9 @@
         private ItemDatabase itemDb = new ItemDatabase();
         //유틸리티 인스턴스
         private Utility ut = Utility.Instance;
+        //플레이어 객체 가져오기
+        private Character player;
+
 
         //상점 아이템 리스트
         private List<IItem> shopItems = new List<IItem>();
@@ -24,18 +27,27 @@
             shopItems.Remove(itemDb.SearchByItemID(-1));
         }
 
+        //객체 가져오기 함수
+        public void GetPlayerClass(Character _player)
+        {
+            player = _player;
+        }
+
         //플레이어가 아이템을 구매할 때 호출
         public void BuyItem(int index)
         {
-            
+            if (player.LoseGold(shopItems[index].ItemPrice))
+            {
+                Console.WriteLine($"{shopItems[index].ItemName}을 구매했습니다.");
+                player.playerInven.AddItem(shopItems[index]);
+            }
         }
 
         //플레이어가 아이템을 팔 때 호출
         public void SellItem(IItem item)
         {
             //플레이어가 골드 획득(차후 구현)
-
-
+            player.GetGold(item.ItemPrice);
         }
 
         public void ShowShop()

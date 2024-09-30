@@ -161,7 +161,11 @@
 
         public override void UseItem(Character character)
         {
+            Console.WriteLine("체력이 회복되었습니다.");
+            int temp = character.Health;
             //회복
+            character.GetHeal(ItemAmount);
+            Console.WriteLine($"체력 : {temp} -> {character.Health}");
         }
     }
 }

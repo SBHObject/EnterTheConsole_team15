@@ -12,7 +12,7 @@
 
         //장착 장비를 관리하는 배열
         private IItem[] playerEquip = new IItem[2];
-        public IItem PlayerEquip
+        public IItem[] PlayerEquip
         {
             get { return PlayerEquip; }
         }
@@ -52,58 +52,6 @@
                 //인덱스에 아이템이 있으면 삭제
                 playerInven[indexNum] = null;
                 return true;
-            }
-        }
-
-        public bool UseItem(int index)
-        {
-            //아이템의 종류에 따라 달라짐
-            switch(playerInven[index].ItemType)
-            {
-                //무기일경우
-                case ItemType.Weapon:
-                    //장비 슬롯에 아이템이 없으면 장착
-                    if (playerEquip[0] == null)
-                    {
-                        playerEquip[0] = playerInven[index];
-                        RemoveItem(index);
-                    }
-                    else
-                    {
-                        //있으면 교체
-                        IItem temp = playerEquip[0];
-                        playerEquip[0] = playerInven[index];
-                        playerInven[index] = temp;
-                    }
-                    Console.WriteLine($"{playerInven[index].ItemName}를 장착했습니다");
-                    return true;
-
-                //방어구일경우
-                case ItemType.Armor:
-                    //무기와 같은 기능, 슬롯이 달라짐
-                    if (playerEquip[1] == null)
-                    {
-                        playerEquip[1] = playerInven[index];
-                        RemoveItem(index);
-                    }
-                    else
-                    {
-                        IItem temp = playerEquip[1];
-                        playerEquip[1] = playerInven[index];
-                        playerInven[index] = temp;
-                    }
-                    Console.WriteLine($"{playerInven[index].ItemName}를 장착했습니다");
-                    return true;
-
-                //소모품인경우
-                case ItemType.Consumable:
-                    Console.WriteLine("소모품을 사용하였습니다.");
-                    return true;
-
-                //그 외 입력이 들어올경우 아이템 사용 실패 -> 버그
-                default:
-                    Console.WriteLine("아이템 사용에 실패하였습니다.");
-                    return false;
             }
         }
     }
