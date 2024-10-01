@@ -88,5 +88,20 @@
                 }
             }
         }
+
+        public void ShowInventory()
+        {
+            for(int i = 0; i < playerInven.Length; i++)
+            {
+                string showItem = $"{i + 1}. {playerInven[i].ShowItemDescription}";
+                Console.Write(showItem);
+            }
+        }
+
+        public void ShowEquip()
+        {
+            Console.WriteLine($"무기 : {playerInven[0].ShowItemDescription}");
+            Console.WriteLine($"방어구 : {playerInven[1].ShowItemDescription}");
+        }
     }
 }
