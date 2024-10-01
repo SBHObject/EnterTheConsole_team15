@@ -83,7 +83,7 @@
         //아이템 설명 반환
         public string ShowItemDescription()
         {
-            string description = ItemName + " | " + "공격력 : " + ItemDamage + " | " + ItemDescription + "  ";
+            string description = $"{ItemName,8} | 공격력 : {ItemDamage,2} | {ItemDescription,-15}";
             return description;
         }
     }
@@ -110,7 +110,7 @@
         //아이템 설명 반환
         public string ShowItemDescription()
         {
-            string description = ItemName + " | " + "방어력 : " + ItemDefence + " | " + ItemDescription + "  ";
+            string description = $"{ItemName,8} | 방어력 : {ItemDefence,2} | {ItemDescription,-15}";
             return description;
         }
     }
@@ -138,7 +138,7 @@
         //아이템 설명 반환
         public virtual string ShowItemDescription()
         {
-            string description = ItemName + " | " + "회복량 : " + ItemAmount + " | " + ItemDescription + "  ";
+            string description = $"{ItemName,8} | 회복량 : {ItemAmount,2} | {ItemDescription,-15}";
             return description;
         }
 
@@ -155,7 +155,7 @@
 
         public override string ShowItemDescription()
         {
-            string description = ItemName + " | " + "회복량 : " + ItemAmount + " | " + ItemDescription + "  ";
+            string description = $"{ItemName,8} | 회복량 : {ItemAmount,2} | {ItemDescription,-15}";
             return description;
         }
 

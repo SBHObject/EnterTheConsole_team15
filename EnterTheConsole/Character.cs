@@ -79,7 +79,11 @@
         public void TakeDamage(int damage)
         {
             Health -= damage;
-            //TODO 사망
+            //사망
+            if(Health <= 0)
+            {
+                IsDead = true;
+            }
         }
 
         //돈 얻기

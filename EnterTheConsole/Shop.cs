@@ -55,8 +55,7 @@
             for(int i = 0; i < shopItems.Count; i++)
             {
                 //아이템의 정보 출력
-                string shopItemText = (i + 1) + "." + shopItems[i].ShowItemDescription() 
-                    + " | " + shopItems[i].ItemPrice + "G  ";
+                string shopItemText = $"{i + 1}. {shopItems[i].ShowItemDescription()} | {shopItems[i].ItemPrice,-5}G";
 
                 Console.WriteLine(shopItemText);
             }
