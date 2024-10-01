@@ -151,9 +151,9 @@
                     defence = 8;
                     break;
                 default:
-                    Health = maxHealth;
-                    Attack = attack;
-                    Defence = defence;
+                    Health = 1;
+                    Attack = 1;
+                    Defence = 1;
                     break;
             }
 
