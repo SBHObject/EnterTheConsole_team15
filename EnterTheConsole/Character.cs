@@ -1,5 +1,11 @@
 ﻿namespace EnterTheConsole
 {
+    public enum Job
+    {
+        Warrior,
+        Thief
+    }
+
     internal class Character
     {
         //유틸리티 클래스 예제
@@ -36,6 +42,25 @@
         //인벤토리
         public Inventory playerInven = new Inventory();
 
+        private Job playerJob;
+        public string PlayerJob
+        {
+            get
+            {
+                switch(playerJob)
+                {
+                    case Job.Warrior:
+                        return "전사";
+
+                    case Job.Thief:
+                        return "도적";
+
+                    default:
+                        return "???";
+                }
+            }
+        }
+
         //생성자 - 기본값 초기화
         /// <summary>
         /// new Character 생성자 사용하지 말고 Program.player 사용해서 객체 가져올것
@@ -67,12 +92,74 @@
                 Console.Clear();
                 Console.WriteLine($"\"{nameInput}\" 이 이름이 맞습니까?");
                 Console.WriteLine($"1.예 2.아니오");
-                if(ut.Selecter(Console.ReadLine(), 2) == 1)
+
+                if(ut.Selecter(Console.ReadLine(), 2) != 1)
+                {
+                    continue;
+                }
+
+                Name = nameInput;
+                Console.WriteLine();
+                Console.WriteLine("직업을 선택해주세요.");
+                Console.WriteLine("1. 전사\n2. 도적");
+                int input = ut.Selecter(Console.ReadLine(), 2);
+                switch(input)
+                {
+                    case 1:
+                        SettingJobStatus(Job.Warrior);
+                        break;
+                    case 2:
+                        SettingJobStatus(Job.Thief);
+                        break;
+                    default:
+                        continue;
+                }
+
+                Console.Clear();
+                Console.WriteLine($"이름 : {Name}\n직업 : {PlayerJob}");
+                Console.WriteLine();
+                Console.WriteLine("이 내용이 맞습니까?");
+                Console.WriteLine("1. 예\n0.아니오 (1이외의 입력시, 아니오)");
+                if(Console.ReadLine() == "1")
                 {
                     Console.WriteLine("게임을 시작합니다.");
+                    Thread.Sleep(1000);
                     break;
                 }
+                else
+                {
+                    continue;
+                }
+                
             }
+        }
+
+        private void SettingJobStatus(Job job)
+        {
+            playerJob = job;
+
+            switch(playerJob)
+            {
+                case Job.Warrior:
+                    maxHealth = 100;
+                    attack = 10;
+                    defence = 12;
+                    break;
+                case Job.Thief:
+                    maxHealth = 90;
+                    attack = 15;
+                    defence = 8;
+                    break;
+                default:
+                    Health = maxHealth;
+                    Attack = attack;
+                    Defence = defence;
+                    break;
+            }
+
+            Health = maxHealth;
+            Attack = attack;
+            Defence = defence;
         }
 
         //플레이어가 데미지 받는 함수
