@@ -36,6 +36,10 @@
                 Console.WriteLine($"{shopItems[index].ItemName}을 구매했습니다.");
                 player.playerInven.AddItem(shopItems[index]);
             }
+            else
+            {
+                Console.WriteLine("소지금이 부족합니다.");
+            }
         }
 
         //플레이어가 아이템을 팔 때 호출
@@ -47,21 +51,24 @@
 
         public void ShowShop()
         {
-            Console.Clear();
-            Console.WriteLine("[상점]");
-            Console.WriteLine();
-
-            //아이템 목록
-            for(int i = 0; i < shopItems.Count; i++)
-            {
-                //아이템의 정보 출력
-                string shopItemText = $"{i + 1}. {shopItems[i].ShowItemDescription()} | {shopItems[i].ItemPrice,-5}G";
-
-                Console.WriteLine(shopItemText);
-            }
-            Console.WriteLine();
             while (true)
             {
+                Console.Clear();
+                Console.WriteLine("[상점]");
+                Console.WriteLine();
+
+                Console.WriteLine($"소지금 : {player.PlayerGold}G");
+
+                //아이템 목록
+                for (int i = 0; i < shopItems.Count; i++)
+                {
+                    //아이템의 정보 출력
+                    string shopItemText = $"{i + 1}. {shopItems[i].ShowItemDescription()} | {shopItems[i].ItemPrice,-5}G";
+
+                    Console.WriteLine(shopItemText);
+                }
+                Console.WriteLine();
+
                 Console.WriteLine("구매할 아이템을 선택해주세요. 표기된 숫자 이외의 입력시, 상점에서 나갑니다.");
 
                 //플레이어에게 입력받기
@@ -71,18 +78,16 @@
                 {
                     Console.WriteLine($"{shopItems[input - 1].ItemName}을 구매하시겠습니까?");
                     Console.WriteLine("1.예 2.아니오 (1이외 입력시, 아니오)");
-                    if(Console.ReadLine() == "1")
+                    if (Console.ReadLine() == "1")
                     {
-                        //차후 구현시, 돈 부족 여부를 판단해야함
-                        BuyItem(input);
-                        Console.WriteLine($"{shopItems[input - 1].ItemName}을 구매했습니다.");
+                        BuyItem(input - 1);
                         Thread.Sleep(1000);
                     }
                 }
                 else
                 {
                     Console.WriteLine("상점 나가기");
-                    Thread.Sleep(1000);
+                    Console.ReadLine();
                     break;
                 }
             }

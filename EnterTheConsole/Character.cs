@@ -80,7 +80,7 @@
         }
 
         //캐릭터 생성
-        public void CreatePlayer(string name)
+        public void CreatePlayer()
         {
             while (true)
             {
@@ -123,7 +123,7 @@
                 if(Console.ReadLine() == "1")
                 {
                     Console.WriteLine("게임을 시작합니다.");
-                    Thread.Sleep(1000);
+                    Console.ReadLine();
                     break;
                 }
                 else
