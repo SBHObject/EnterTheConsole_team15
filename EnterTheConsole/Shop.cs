@@ -81,7 +81,7 @@
                     if (Console.ReadLine() == "1")
                     {
                         BuyItem(input - 1);
-                        Thread.Sleep(1000);
+                        Console.ReadLine();
                     }
                 }
                 else

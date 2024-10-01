@@ -182,7 +182,7 @@
                 Console.WriteLine("[가방]");
                 ShowInventory();
                 Console.WriteLine();
-                Console.WriteLine("장착할 아이템의 번호를 입력해주세요. 없는 번호 입력시 창을 종료합니다.");
+                Console.WriteLine("장착할 아이템의 번호를 입력해주세요. 없는 번호를 입력시 창을 종료합니다.");
                 int input = Utility.Instance.Selecter(Console.ReadLine(), playerInven.Length);
                 if (input >= 1 && input < playerInven.Length)
                 {

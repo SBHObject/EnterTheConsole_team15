@@ -206,6 +206,7 @@
             Health = (temp > maxHealth)? maxHealth : temp;
         }
 
+        //중복기능... 이후 처리 생각하기
         public bool UseItem(int index)
         {
             //아이템의 종류에 따라 달라짐

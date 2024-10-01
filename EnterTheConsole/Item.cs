@@ -166,6 +166,7 @@
             //회복
             character.GetHeal(ItemAmount);
             Console.WriteLine($"체력 : {temp} -> {character.Health}");
+            Console.ReadLine();
         }
     }
 }
