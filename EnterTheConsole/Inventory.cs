@@ -14,8 +14,12 @@
         private IItem[] playerEquip = new IItem[2];
         public IItem[] PlayerEquip
         {
-            get { return PlayerEquip; }
+            get { return playerEquip; }
         }
+
+        public delegate void EquipEventHendler();
+
+        public event EquipEventHendler UpdateStatus;
 
         //인벤토리에 아이템을 넣는 함수
         public bool AddItem(IItem item)
@@ -99,6 +103,9 @@
                     Console.WriteLine("해당아이템은 장착할 수 없습니다.");
                     Console.ReadLine();
                 }
+
+                //장비 장착후, 스테이터스 변환
+                UpdateStatus?.Invoke();
             }
         }
 

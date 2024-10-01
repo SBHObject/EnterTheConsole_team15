@@ -77,6 +77,9 @@
             Attack = attack;
             Defence = defence;
             Name = "player";
+
+            //이벤트 함수 등록, 장비 변경시 스텟 업데이트 함수 호출
+            playerInven.UpdateStatus += UpdateStatus;
         }
 
         //캐릭터 생성
@@ -228,6 +231,32 @@
                 default:
                     Console.WriteLine("아이템 사용에 실패하였습니다.");
                     return false;
+            }
+        }
+
+        //장비에 따른 스테이터스 업데이트
+        public void UpdateStatus()
+        {
+            //무기 장착에 따른 공격력 변화
+            if (playerInven.PlayerEquip[0] != null)
+            {
+                ItemWeapon equipedWeapon = (ItemWeapon)playerInven.PlayerEquip[0];
+                Attack = attack + equipedWeapon.ItemDamage;
+            }
+            else
+            {
+                Attack = attack;
+            }
+
+            //방어구 장착에 따른 방어력 변화
+            if (playerInven.PlayerEquip[1] != null)
+            {
+                ItemArmor equipedArmor = (ItemArmor)playerInven.PlayerEquip[1];
+                Defence = defence + equipedArmor.ItemDefence;
+            }
+            else
+            {
+                Defence = defence;
             }
         }
     }
