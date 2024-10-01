@@ -34,7 +34,7 @@
 
         //레벨관련 -> 경험치와 레벨
         public int PlayerExp { get; private set; } = 0;
-        public int PlayerLevel { get; private set; } = 0;
+        public int PlayerLevel { get; private set; } = 1;
 
         //사망관련
         public bool IsDead { get; private set; } = false;
