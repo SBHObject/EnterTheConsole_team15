@@ -14,6 +14,10 @@ namespace EnterTheConsole
             Console.WriteLine($"방어력 : {player.Defence}");
             Console.WriteLine($"체 력 : {player.Health}");
             Console.WriteLine($"Gold : {player.PlayerGold} G");
+
+            Console.WriteLine();
+            Console.WriteLine("0. 나가기");
+            Console.ReadLine();
         }
     }
     
