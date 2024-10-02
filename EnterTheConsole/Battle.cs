@@ -14,7 +14,7 @@ namespace EnterTheConsole
         //전투시 사용할 함수입니다.
         //메인에서 이 함수를 호출했을때, 전투가 진행되도록 코드를 짜주면 됩니다.
         //매개변수로써 플레이어 클래스의 객체를 가져와 사용합니다.
-        public void Stage(Character player, int numberOfMonster)
+        public void Stage(Character player)
         {
             Random random = new Random();
             int numberOfMonsters = random.Next(1, 5); // 1~4마리의 몬스터가 랜덤하게 등장
@@ -54,20 +54,22 @@ namespace EnterTheConsole
             //살아있는 몬스터의 숫자가 0이 아니면 계속 반복됩니다.
             while (livingMonsters != 0)
             {
+                Console.Clear();
                 Console.WriteLine("전투 시작!");
                 Console.WriteLine();
+                int count = 1;
                 foreach(Monster monster in monsters)
                 {
                     //몬스터의 사망 여부에 따라 표기를 변경해주는 기능입니다.
                     if (monster.IsDead == false)
                     {
-                        Console.WriteLine($"Lv.{monster.Level:D2} {monster.Name:D5} HP {monster.HP}");
+                        Console.WriteLine($"{count++:D2}. Lv.{monster.Level:D2} {monster.Name:D5} HP {monster.HP}");
                     }
                     else
                     {
                         //사망한 몬스터는 체력 대신 Dead 를 표기하고, 색을 회색으로 바꿔줍니다.
                         Console.ForegroundColor = ConsoleColor.Gray;
-                        Console.WriteLine($"Lv.{monster.Level:D2} {monster.Name:D5} Dead");
+                        Console.WriteLine($"{count++:D2}. Lv.{monster.Level:D2} {monster.Name:D5} Dead");
                         Console.ResetColor();
                     }
                 }
@@ -133,6 +135,9 @@ namespace EnterTheConsole
 
                             Console.WriteLine("0.다음");
                             Console.ReadLine();
+
+                            //성공적을 공격했을경우 턴을 마칩니다.
+                            isPlayerTurn = false;
                         }
                         else
                         {
@@ -188,8 +193,13 @@ namespace EnterTheConsole
                             break;
                         }
                     }
+
+                    //몬스터의 턴을 마칩니다.
+                    isPlayerTurn = true;
                 }
             }
+
+            Console.Clear();
 
             //반복문 종료후, 생존 몬스터의 숫자에 따라서 결과를 달리합니다.
             if(livingMonsters == 0)
@@ -207,6 +217,9 @@ namespace EnterTheConsole
 
                 Console.WriteLine($"Lv.{player.PlayerLevel} {player.Name}");
                 Console.WriteLine($"HP {beforeHP} -> {player.Health}");
+                //임시로, 처치한 몬스터 한마리당 100G를 주니다.
+                player.GetGold(100 * monsters.Count);
+                Console.WriteLine($"{100 * monsters.Count}G 를 보상으로 받았습니다.");
                 Console.WriteLine();
 
                 Console.WriteLine("0.다음");

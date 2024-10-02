@@ -9,6 +9,7 @@ namespace EnterTheConsole
         private static Utility ut = Utility.Instance;
         private static Status playerStat;
         private static Shop shop;
+        private static Battle battle = new Battle();
 
         static void Main(string[] args)
         {
@@ -41,6 +42,7 @@ namespace EnterTheConsole
                         break;
                     case 2:
                         //스테이지 선택
+                        battle.Stage(player);
                         break;
                     case 3:
                         //장비 관리

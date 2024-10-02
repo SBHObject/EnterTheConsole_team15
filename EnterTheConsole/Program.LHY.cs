@@ -50,31 +50,31 @@ public class Program
         int numberOfMonsters = random.Next(1, 5); // 1~4마리의 몬스터가 랜덤하게 등장
         List<Monster> monsters = new List<Monster>();
 
-//        for (int i = 0; i < numberOfMonsters; i++)
-//        {
-//            int monsterType = random.Next(1, 4); // 1~3의 몬스터 종류 랜덤
-//            switch (monsterType)
-//            {
-//                case 1:
-//                    monsters.Add(new Monster("Lv2 미니언", 15, 5));
-//                    break;
-//                case 2:
-//                    monsters.Add(new Monster("Lv3 공허충", 10, 9));
-//                    break;
-//                case 3:
-//                    monsters.Add(new Monster("Lv5 대포미니언", 25, 8));
-//                    break;
-//            }
-//        }
+        for (int i = 0; i < numberOfMonsters; i++)
+        {
+            int monsterType = random.Next(1, 4); // 1~3의 몬스터 종류 랜덤
+            switch (monsterType)
+            {
+                case 1:
+                    monsters.Add(new Monster("Lv2 미니언", 15, 5));
+                    break;
+                case 2:
+                    monsters.Add(new Monster("Lv3 공허충", 10, 9));
+                    break;
+                case 3:
+                    monsters.Add(new Monster("Lv5 대포미니언", 25, 8));
+                    break;
+            }
+        }
 
         Character player = new Player("Chad", 100);
         Program program = new Program(player);
 
-//        Console.WriteLine("전투 시작!");
-//        foreach (var monster in monsters)
-//        {
-//            Console.WriteLine($"{monster.Name} 등장! HP: {monster.HP}, ATK: {monster.ATK}");
-//        }
+        Console.WriteLine("전투 시작!");
+        foreach (var monster in monsters)
+        {
+            Console.WriteLine($"{monster.Name} 등장! HP: {monster.HP}, ATK: {monster.ATK}");
+        }
 
         while (true)
         {
@@ -95,18 +95,18 @@ public class Program
             }
             Console.WriteLine("0. 취소");
 
-//            int choice;
-//            if (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice > monsters.Count)
-//            {
-//                Console.WriteLine("잘못된 입력입니다.");
-//                continue;
-//            }
+            int choice;
+            if (!int.TryParse(Console.ReadLine(), out choice) || choice < 0 || choice > monsters.Count)
+            {
+                Console.WriteLine("잘못된 입력입니다.");
+                continue;
+            }
 
-//            if (choice == 0)
-//            {
-//                Console.WriteLine("전투를 종료합니다.");
-//                break;
-//            }
+            if (choice == 0)
+            {
+                Console.WriteLine("전투를 종료합니다.");
+                break;
+            }
 
             var selectedMonster = monsters[choice - 1];
             if (selectedMonster.IsDead)
@@ -115,9 +115,9 @@ public class Program
                 continue;
             }
 
-//            int attackPower = random.Next(9, 12); // 공격력 10, 오차 1, 최종 공격력 9 ~ 11 랜덤 값
-//            selectedMonster.HP -= attackPower;
-//            Console.WriteLine($"{selectedMonster.Name}을(를) 공격했습니다! 공격력: {attackPower}");
+            int attackPower = random.Next(9, 12); // 공격력 10, 오차 1, 최종 공격력 9 ~ 11 랜덤 값
+            selectedMonster.HP -= attackPower;
+            Console.WriteLine($"{selectedMonster.Name}을(를) 공격했습니다! 공격력: {attackPower}");
 
             if (selectedMonster.IsDead)
             {
@@ -141,13 +141,13 @@ public class Program
                         return;
                     }
 
-//                    Console.WriteLine("0. 다음");
-//                    if (Console.ReadLine() != "0")
-//                    {
-//                        Console.WriteLine("잘못된 입력입니다.");
-//                    }
-//                }
-//            }
+                    Console.WriteLine("0. 다음");
+                    if (Console.ReadLine() != "0")
+                    {
+                        Console.WriteLine("잘못된 입력입니다.");
+                    }
+                }
+            }
 
             // 모든 몬스터가 죽었는지 확인
             if (monsters.TrueForAll(m => m.IsDead))
