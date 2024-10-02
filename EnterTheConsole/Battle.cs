@@ -68,7 +68,7 @@ namespace EnterTheConsole
                     else
                     {
                         //사망한 몬스터는 체력 대신 Dead 를 표기하고, 색을 회색으로 바꿔줍니다.
-                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"{count++:D2}. Lv.{monster.Level:D2} {monster.Name:D5} Dead");
                         Console.ResetColor();
                     }
