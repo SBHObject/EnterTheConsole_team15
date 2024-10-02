@@ -259,5 +259,11 @@
                 Defence = defence;
             }
         }
+
+        public void Revive()
+        {
+            Health = maxHealth / 10;
+            IsDead = false;
+        }
     }
 }
