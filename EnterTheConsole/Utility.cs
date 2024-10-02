@@ -32,7 +32,7 @@
             if(int.TryParse(input, out int returnInt))
             {
                 //입력값 int형으로 반환
-                if(returnInt >= 1 && returnInt <= numberOfOption)
+                if(returnInt >= 0 && returnInt <= numberOfOption)
                 {
                     return returnInt;
                 }
