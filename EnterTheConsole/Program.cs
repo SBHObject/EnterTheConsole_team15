@@ -7,7 +7,7 @@ namespace EnterTheConsole
         public static Character player = new Character();
         public static ItemDatabase itemDB = new ItemDatabase();
         private static Utility ut = Utility.Instance;
-        private static Status playerStat;
+        private static Status playerStat = new Status();
         private static Shop shop;
         private static Battle battle = new Battle();
 
@@ -39,6 +39,7 @@ namespace EnterTheConsole
                 {
                     case 1:
                         //스텟 보기
+                        playerStat.DisplayCharacterInfo(player);
                         break;
                     case 2:
                         //스테이지 선택
