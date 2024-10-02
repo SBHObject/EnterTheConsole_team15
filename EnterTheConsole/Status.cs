@@ -7,7 +7,7 @@ namespace EnterTheConsole
     {
         public void DisplayCharacterInfo(Character player)
         {
-
+            Console.Clear();
             Console.WriteLine($"LV. {player.PlayerLevel:D2}");
             Console.WriteLine($"{player.Name} ( {player.PlayerJob} )");
             Console.WriteLine($"공격력 : {player.Attack} ");

@@ -34,7 +34,7 @@ namespace EnterTheConsole
                 Console.WriteLine("하실 행동을 선택해주세요");
 
                 Console.WriteLine("1.상태 보기\n2.전투 시작\n3.장비 관리\n4.상점\n5.게임 종료");
-                int input = ut.Selecter(Console.ReadLine(), 4);
+                int input = ut.Selecter(Console.ReadLine(), 5);
                 switch(input)
                 {
                     case 1:
