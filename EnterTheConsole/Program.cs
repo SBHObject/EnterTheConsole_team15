@@ -1,6 +1,4 @@
-﻿using System.Diagnostics;
-
-namespace EnterTheConsole
+﻿namespace EnterTheConsole
 {
     internal class Program
     {

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace EnterTheConsole
+﻿namespace EnterTheConsole
 {
     //Program 클래스와 Main 함수는 단 하나만 존재해야합니다.
     //또한 Main 함수에 게임의 모든 내용을 담아야하기 때문에 클래스로 나누어서 구현하게됩니다.
